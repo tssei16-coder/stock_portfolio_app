@@ -1,0 +1,24 @@
+# Firebase設定ファイル（絶対にコミットしないでください）
+lib/firebase_options.dart
+
+# Python Admin SDK 認証情報
+python/serviceAccountKey.json
+python/*.log
+
+# Flutter生成ファイル
+*.freezed.dart
+*.g.dart
+.dart_tool/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+pubspec.lock
+
+# IDEファイル
+.idea/
+.vscode/
+*.iml
+
+# OS固有
+.DS_Store
+Thumbs.db
