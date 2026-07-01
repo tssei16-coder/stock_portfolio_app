@@ -30,7 +30,7 @@ SERVICE_ACCOUNT_KEY = "serviceAccountKey.json"
 
 # FirebaseのユーザーUID（Firebase Console > Authentication で確認できます）
 # 例: "AbCdEf1234567890xyz"
-FIREBASE_USER_UID = "YOUR_USER_UID_HERE"
+FIREBASE_USER_UID = "6OGWOsr4X9eEf29OKF2leh0JHVt1"
 
 # 取得する銘柄リスト（証券コード + .T の形式）
 # ※ Firestoreに登録されている銘柄コードから自動取得するため、通常は変更不要
