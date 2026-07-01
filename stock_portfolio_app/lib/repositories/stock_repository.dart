@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
+import 'package:http/http.dart' as http;
 import '../models/stock.dart';
 
 /// Firestoreへのアクセスを担うリポジトリ
@@ -42,6 +44,15 @@ class StockRepository {
       'updatedAt': now,
       'priceUpdatedAt': now,
     });
+
+    // 銘柄追加後にバックグラウンドでRenderの更新APIを叩く（非同期で投げっぱなし）
+    try {
+      final url = Uri.parse('https://stock-portfolio-app-8l81.onrender.com/api/update_all');
+      http.get(url).timeout(const Duration(seconds: 5)).catchError((_) => http.Response('', 500));
+      debugPrint('[StockRepository] Triggered Render update_all API after addStock.');
+    } catch (e) {
+      debugPrint('[StockRepository] Failed to trigger update_all API: $e');
+    }
   }
 
   /// 銘柄を更新（株価以外のフィールド）

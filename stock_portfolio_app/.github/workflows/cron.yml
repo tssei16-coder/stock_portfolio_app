@@ -1,0 +1,17 @@
+name: Bulk Update Stocks
+
+on:
+  schedule:
+    # 日本時間平日の15:35（UTC 6:35）に実行
+    # cron: '分 時 日 月 曜日'
+    # 曜日: 1-5 (月-金)
+    - cron: '35 6 * * 1-5'
+  workflow_dispatch: # 手動実行可能にする
+
+jobs:
+  update-stocks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Update API
+        run: |
+          curl -X POST https://stock-portfolio-app-8l81.onrender.com/api/update_all
